@@ -14,7 +14,7 @@ public class Overlay extends JFrame {
 
     private final static int WIDTH = 625;
 
-    private final static int HEIGHT = 457;
+    private final static int HEIGHT = 477;
 
     private MainPanel panel;
 

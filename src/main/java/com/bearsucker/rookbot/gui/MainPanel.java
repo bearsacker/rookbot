@@ -1,7 +1,11 @@
 package com.bearsucker.rookbot.gui;
 
+import static java.awt.Color.WHITE;
+import static java.awt.Font.BOLD;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -26,6 +30,10 @@ public class MainPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+
+        g.setColor(WHITE);
+        g.setFont(new Font("Dialog", BOLD, 12));
+        g.drawString("RookBot", 16, this.getHeight() - 4);
 
         if (board != null && board.getPlayer() != null) {
             for (int i = board.getPlayer().getX() - 1; i >= 0; i--) {
