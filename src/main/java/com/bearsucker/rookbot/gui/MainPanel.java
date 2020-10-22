@@ -32,8 +32,11 @@ public class MainPanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
 
         g.setColor(WHITE);
+        g.drawRect(this.getX(), this.getY(), this.getWidth() - 1, this.getHeight() - 32 - 1);
+
+        g.setColor(WHITE);
         g.setFont(new Font("Dialog", BOLD, 12));
-        g.drawString("RookBot", 16, this.getHeight() - 4);
+        g.drawString("RookBot by Bearsacker", 16, this.getHeight() - 18);
 
         if (board != null && board.getPlayer() != null) {
             for (int i = board.getPlayer().getX() - 1; i >= 0; i--) {
@@ -41,15 +44,15 @@ public class MainPanel extends JPanel {
 
                 if (board.getTile(i, board.getPlayer().getY())) {
                     g.setColor(RED);
-                    g.fillRect(i * Board.WIDTH + 16, board.getPlayer().getY() * Board.HEIGHT + 12, 48, 33);
+                    g.fillRect(i * Board.TILE_WIDTH + 10, board.getPlayer().getY() * Board.TILE_HEIGHT + 10, 60, 42);
                     painted = true;
                 }
 
                 if (board.isPieceOn(i, board.getPlayer().getY())) {
                     if (!painted) {
                         g.setColor(GREEN);
-                        g2.setStroke(new BasicStroke(8));
-                        g.drawRect(i * Board.WIDTH + 16, board.getPlayer().getY() * Board.HEIGHT + 12, 48, 33);
+                        g2.setStroke(new BasicStroke(4));
+                        g.drawRect(i * Board.TILE_WIDTH + 12, board.getPlayer().getY() * Board.TILE_HEIGHT + 12, 56, 38);
                     }
 
                     break;
@@ -61,15 +64,15 @@ public class MainPanel extends JPanel {
 
                 if (board.getTile(i, board.getPlayer().getY())) {
                     g.setColor(RED);
-                    g.fillRect(i * Board.WIDTH + 16, board.getPlayer().getY() * Board.HEIGHT + 12, 48, 33);
+                    g.fillRect(i * Board.TILE_WIDTH + 10, board.getPlayer().getY() * Board.TILE_HEIGHT + 10, 60, 42);
                     painted = true;
                 }
 
                 if (board.isPieceOn(i, board.getPlayer().getY())) {
                     if (!painted) {
                         g.setColor(GREEN);
-                        g2.setStroke(new BasicStroke(8));
-                        g.drawRect(i * Board.WIDTH + 16, board.getPlayer().getY() * Board.HEIGHT + 12, 48, 33);
+                        g2.setStroke(new BasicStroke(4));
+                        g.drawRect(i * Board.TILE_WIDTH + 12, board.getPlayer().getY() * Board.TILE_HEIGHT + 12, 56, 38);
                     }
 
                     break;
@@ -81,15 +84,15 @@ public class MainPanel extends JPanel {
 
                 if (board.getTile(board.getPlayer().getX(), i)) {
                     g.setColor(RED);
-                    g.fillRect(board.getPlayer().getX() * Board.WIDTH + 16, i * Board.HEIGHT + 12, 48, 33);
+                    g.fillRect(board.getPlayer().getX() * Board.TILE_WIDTH + 10, i * Board.TILE_HEIGHT + 10, 60, 42);
                     painted = true;
                 }
 
                 if (board.isPieceOn(board.getPlayer().getX(), i)) {
                     if (!painted) {
                         g.setColor(GREEN);
-                        g2.setStroke(new BasicStroke(8));
-                        g.drawRect(board.getPlayer().getX() * Board.WIDTH + 16, i * Board.HEIGHT + 12, 48, 33);
+                        g2.setStroke(new BasicStroke(4));
+                        g.drawRect(board.getPlayer().getX() * Board.TILE_WIDTH + 12, i * Board.TILE_HEIGHT + 12, 56, 38);
                     }
 
                     break;
@@ -101,15 +104,15 @@ public class MainPanel extends JPanel {
 
                 if (board.getTile(board.getPlayer().getX(), i)) {
                     g.setColor(RED);
-                    g.fillRect(board.getPlayer().getX() * Board.WIDTH + 16, i * Board.HEIGHT + 12, 48, 33);
+                    g.fillRect(board.getPlayer().getX() * Board.TILE_WIDTH + 10, i * Board.TILE_HEIGHT + 10, 60, 42);
                     painted = true;
                 }
 
                 if (board.isPieceOn(board.getPlayer().getX(), i)) {
                     if (!painted) {
                         g.setColor(GREEN);
-                        g2.setStroke(new BasicStroke(8));
-                        g.drawRect(board.getPlayer().getX() * Board.WIDTH + 16, i * Board.HEIGHT + 12, 48, 33);
+                        g2.setStroke(new BasicStroke(4));
+                        g.drawRect(board.getPlayer().getX() * Board.TILE_WIDTH + 12, i * Board.TILE_HEIGHT + 12, 56, 38);
                     }
 
                     break;

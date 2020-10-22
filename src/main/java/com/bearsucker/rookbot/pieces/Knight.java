@@ -6,7 +6,8 @@ import com.bearsucker.rookbot.board.Board;
 
 public class Knight extends Piece {
 
-    public final static Color[] COLORS = new Color[] {new Color(108, 108, 108), new Color(156, 156, 156)};
+    public final static Color[] COLORS =
+            new Color[] {new Color(108, 108, 108), new Color(156, 156, 156), null, new Color(0, 0, 0)};
 
     public Knight(int x, int y) {
         super(x, y);

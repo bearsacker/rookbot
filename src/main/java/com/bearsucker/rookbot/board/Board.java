@@ -23,9 +23,11 @@ public class Board implements Cloneable {
 
     public static final Color BLACK = new Color(117, 117, 117);
 
-    public static final int WIDTH = 78;
+    public static final int BOARD_SIZE = 8;
 
-    public static final int HEIGHT = 57;
+    public static final int TILE_WIDTH = 78;
+
+    public static final int TILE_HEIGHT = 60;
 
     private ArrayList<Piece> pieces;
 
@@ -50,12 +52,12 @@ public class Board implements Cloneable {
     public static boolean check(int x, int y) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                Color begin = Screen.get().getPixel(x + i * WIDTH, y + j * HEIGHT);
+                Color begin = Screen.get().getPixel(x + i * TILE_WIDTH, y + j * TILE_HEIGHT);
                 if (((i + j) % 2 == 0 && !begin.equals(BLACK)) || ((i + j) % 2 != 0 && !begin.equals(WHITE))) {
                     return false;
                 }
 
-                Color end = Screen.get().getPixel(x + (i + 1) * WIDTH - 1, y + (j + 1) * HEIGHT - 2);
+                Color end = Screen.get().getPixel(x + (i + 1) * TILE_WIDTH - 1, y + (j + 1) * TILE_HEIGHT - 2);
                 if (((i + j) % 2 == 0 && !end.equals(BLACK)) || ((i + j) % 2 != 0 && !end.equals(WHITE))) {
                     return false;
                 }
@@ -72,10 +74,11 @@ public class Board implements Cloneable {
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                Color[] colors = new Color[3];
-                colors[0] = Screen.get().getPixel(dx + i * WIDTH + 23, dy + j * HEIGHT);
-                colors[1] = Screen.get().getPixel(dx + i * WIDTH + 26, dy + j * HEIGHT);
-                colors[2] = Screen.get().getPixel(dx + i * WIDTH + 17, dy + j * HEIGHT);
+                Color[] colors = new Color[4];
+                colors[0] = Screen.get().getPixel(dx + i * TILE_WIDTH + 23, dy + j * TILE_HEIGHT);
+                colors[1] = Screen.get().getPixel(dx + i * TILE_WIDTH + 26, dy + j * TILE_HEIGHT);
+                colors[2] = Screen.get().getPixel(dx + i * TILE_WIDTH + 17, dy + j * TILE_HEIGHT);
+                colors[3] = Screen.get().getPixel(dx + i * TILE_WIDTH + 20, dy + j * TILE_HEIGHT + 3);
 
                 if (recognize(Pawn.COLORS, colors)) {
                     pieces.add(new Pawn(i, j));
@@ -119,7 +122,7 @@ public class Board implements Cloneable {
     }
 
     public boolean isPieceOn(int x, int y) {
-        return pieces.stream().anyMatch(p -> p.getX() == x && p.getY() == y);
+        return pieces.stream().filter(p -> !p.isPlayable()).anyMatch(p -> p.getX() == x && p.getY() == y);
     }
 
     @SuppressWarnings("unchecked")

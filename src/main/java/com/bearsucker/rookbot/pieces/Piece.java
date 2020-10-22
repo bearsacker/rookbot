@@ -19,7 +19,7 @@ public abstract class Piece {
 
     public static boolean recognize(Color[] model, Color[] colors) {
         for (int i = 0; i < model.length; i++) {
-            if (!colors[i].equals(model[i])) {
+            if (model[i] != null && !colors[i].equals(model[i])) {
                 return false;
             }
         }
@@ -33,5 +33,9 @@ public abstract class Piece {
 
     public int getY() {
         return y;
+    }
+
+    public boolean isPlayable() {
+        return false;
     }
 }

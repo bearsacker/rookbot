@@ -12,27 +12,28 @@ public class Overlay extends JFrame {
 
     private final static String TITLE = "Bot";
 
-    private final static int WIDTH = 625;
+    private final static int WIDTH = Board.BOARD_SIZE * Board.TILE_WIDTH + 2;
 
-    private final static int HEIGHT = 477;
+    private final static int HEIGHT = Board.BOARD_SIZE * Board.TILE_HEIGHT + 32 + 2;
 
     private MainPanel panel;
 
     public Overlay(int x, int y) {
-        JFrame frame = new JFrame();
-        frame.setTitle(TITLE);
-        frame.setUndecorated(true);
-        frame.setAlwaysOnTop(true);
-        frame.setSize(WIDTH, HEIGHT);
-        frame.setResizable(false);
-        frame.setBackground(new Color(0, 0, 0, 0));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocation(x, y);
+        setTitle(TITLE);
+        setUndecorated(true);
+        setAlwaysOnTop(true);
+        setSize(WIDTH, HEIGHT);
+        setResizable(false);
+        setBackground(new Color(0, 0, 0, 0));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocation(x, y);
 
         this.panel = new MainPanel();
-        frame.setContentPane(this.panel);
+        setContentPane(this.panel);
 
-        frame.setVisible(true);
+        setVisible(true);
+
+        addKeyListener(new MoveListener(this));
     }
 
     public void update(Board board) {

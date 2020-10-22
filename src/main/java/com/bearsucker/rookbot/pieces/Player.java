@@ -13,8 +13,10 @@ public class Player extends Piece {
     }
 
     @Override
-    public void compute(Board board) {
+    public void compute(Board board) {}
 
+    @Override
+    public boolean isPlayable() {
+        return true;
     }
-
 }
