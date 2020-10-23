@@ -1,5 +1,6 @@
 package com.bearsucker.rookbot.gui;
 
+import static java.awt.Color.BLACK;
 import static java.awt.Color.WHITE;
 import static java.awt.Font.BOLD;
 
@@ -33,8 +34,9 @@ public class MainPanel extends JPanel {
 
         g.setColor(WHITE);
         g.drawRect(this.getX(), this.getY(), this.getWidth() - 1, this.getHeight() - 32 - 1);
+        g.fillRect(0, this.getHeight() - 32, this.getWidth(), 20);
 
-        g.setColor(WHITE);
+        g.setColor(BLACK);
         g.setFont(new Font("Dialog", BOLD, 12));
         g.drawString("RookBot by Bearsacker", 16, this.getHeight() - 18);
 

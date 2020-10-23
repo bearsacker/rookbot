@@ -37,16 +37,10 @@ public class Board implements Cloneable {
 
     private Player player;
 
-    private int dx;
-
-    private int dy;
-
-    public Board(Overlay overlay, int x, int y) {
+    public Board(Overlay overlay) {
         this.pieces = new ArrayList<Piece>();
         this.tiles = new boolean[8][8];
         this.overlay = overlay;
-        this.dx = x;
-        this.dy = y;
     }
 
     public static boolean check(int x, int y) {
@@ -71,6 +65,9 @@ public class Board implements Cloneable {
         pieces.clear();
         player = null;
         tiles = new boolean[8][8];
+
+        int dx = overlay.getX() + 1;
+        int dy = overlay.getY() + 1;
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
